@@ -1,4 +1,9 @@
 source "http://rubygems.org"
-gem "rspec"#, :require => "spec"
+gemspec
+
 gem "parslet"
-gem "watchr"
+
+group :development, :test do
+  gem "rspec"#, :require => "spec"
+  gem "watchr"
+end
