@@ -21,7 +21,7 @@ class RandomTextParser < Parslet::Parser
   root(:and_sentences)
 end
 
-class Transform < Parslet::Transform
+class RandomTextTransform < Parslet::Transform
   rule(:and_sentences => subtree(:x) ) {
     x.join("")
   }
