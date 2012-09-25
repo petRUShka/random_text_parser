@@ -15,7 +15,7 @@ def growl(result)
   system %(#{growlnotify} #{options} &)
 end
 
-watch( /spec\/(.+)_spec.rb|(.+).rb/ ) do |md|
+watch( /spec\/(.+)_spec.rb|lib\/(.+).rb/ ) do |md|
   system 'clear'
   result = run("rspec spec/#{md[1] || md[2]}_spec.rb")
   growl result

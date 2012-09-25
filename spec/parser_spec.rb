@@ -1,8 +1,7 @@
 #coding=utf-8
 require 'rspec'
 require 'parslet/rig/rspec'
-require './parser'
-
+require './lib/parser'
 
 describe Parser  do
 #  let(:parser) { Parser.new }
