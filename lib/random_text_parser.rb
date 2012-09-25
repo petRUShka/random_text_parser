@@ -5,7 +5,7 @@ require "bundler/setup"
 require 'pp'
 require 'parslet'
 
-class Parser < Parslet::Parser
+class RandomTextParser < Parslet::Parser
   rule(:lparen)     { str('(') }
   rule(:rparen)     { str(')') }
 

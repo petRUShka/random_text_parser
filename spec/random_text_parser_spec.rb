@@ -1,11 +1,9 @@
 #coding=utf-8
 require 'rspec'
 require 'parslet/rig/rspec'
-require './lib/parser'
+require './lib/random_text_parser'
 
-describe Parser  do
-#  let(:parser) { Parser.new }
-#  let(:transform) { Transform.new }
+describe RandomTextParser  do
 
     its(:sentence) {should parse('меньше')}
     its(:sentence) {should parse('меньше часа')}
@@ -37,9 +35,9 @@ describe Parser  do
     )}
 end
 
-describe Transform do
-  let(:parser) { Parser.new }
-  let(:transform) { Transform.new }
+describe RandomTextTransform do
+  let(:parser) { RandomTextParser.new }
+  let(:transform) { RandomTextTransform.new }
 
   it "should transform properly" do
     pending
