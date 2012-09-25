@@ -1,9 +1,5 @@
 #coding=utf-8
-require "rubygems"
-require "bundler/setup"
-
-require 'pp'
-require 'parslet'
+require "random_text_parser/version"
 
 class RandomTextParser < Parslet::Parser
   rule(:lparen)     { str('(') }
