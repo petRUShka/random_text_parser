@@ -6,7 +6,7 @@ require 'random_text_parser/version'
 Gem::Specification.new do |gem|
   gem.name          = "random_text_parser"
 #  gem.version       = RandomTextParser::VERSION
-  gem.version       = "0.0.1"
+  gem.version       = "0.0.2"
   gem.authors       = ["petRUShka"]
   gem.email         = ["petrushkin@yandex.ru"]
 #  gem.description   = %q{Parser that allow to generate almost random text from template}
