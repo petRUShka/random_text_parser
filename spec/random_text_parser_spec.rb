@@ -33,6 +33,8 @@ describe RandomTextParser  do
   (Илья Квашин|Петя Иванов|Ещё кто-то).
    TEMPLATE
     )}
+
+    it {should parse("(A|Б) В")}
 end
 
 describe RandomTextTransform do

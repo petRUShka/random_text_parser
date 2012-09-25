@@ -14,7 +14,9 @@ class RandomTextParser < Parslet::Parser
   rule(:or_sentences)    { ( lparen >> body() >> (vertical >> body).repeat >> rparen )}
   rule(:and_sentences) {(or_sentences.as(:or_sentences)|sentence.as(:sentence)).repeat(2,nil)}
 
-  root(:and_sentences)
+  rule(:text) {and_sentences | or_sentences}
+
+  root(:text)
 end
 
 class RandomTextTransform < Parslet::Transform
