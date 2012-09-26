@@ -19,7 +19,7 @@ class RandomTextParser < Parslet::Parser
   root(:text)
 end
 
-class RandomTextTransform < Parslet::Transform
+class ArrayTextTransform < Parslet::Transform
   rule(:and_sentences => subtree(:x) ) {
     x.join("")
   }
@@ -28,6 +28,12 @@ class RandomTextTransform < Parslet::Transform
     x
   }
 
+  rule(:or_sentences => subtree(:x) ) {
+    "[#{x.join(',')}]"
+  }
+end
+
+class RandomTextTransform < ArrayTextTransform
   rule(:or_sentences => subtree(:x) ) {
     x[rand(x.length)]
   }

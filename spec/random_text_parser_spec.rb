@@ -61,4 +61,20 @@ RESULT
   end
 end
 
+describe ArrayTextTransform do
+  let(:parser) { RandomTextParser.new }
+  let(:transform) { ArrayTextTransform.new }
+
+  it "should transform properly" do
+    result = (parser.parse(<<-TEMPLATE
+       (Уважаемые коллеги | Коллеги), (до полуночи осталось (меньше часа|совсем немного)|полночь уже (совсем|очень) скоро)
+TEMPLATE
+                          ))
+    transform.apply(result).join.should == (<<RESULT
+       [Уважаемые коллеги , Коллеги], [до полуночи осталось [меньше часа,совсем немного],полночь уже [совсем,очень] скоро]
+RESULT
+                                      )
+  end
+end
+
 #RSpec::Core::Runner.run([])
