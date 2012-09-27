@@ -39,6 +39,23 @@ describe RandomTextParser  do
     it {should parse("(A|Б) В")}
 end
 
+
+describe ArrayTextTransform do
+  let(:parser) { RandomTextParser.new }
+  let(:transform) { ArrayTextTransform.new }
+
+  it "should transform properly" do
+    result = (parser.parse(<<-TEMPLATE
+       (Уважаемые коллеги | Коллеги), (до полуночи осталось (меньше часа|совсем немного)|полночь уже (совсем|очень) скоро)
+TEMPLATE
+                          ))
+    transform.apply(result).join.should == (<<RESULT
+       [Уважаемые коллеги , Коллеги], [до полуночи осталось [меньше часа,совсем немного],полночь уже [совсем,очень] скоро]
+RESULT
+                                           )
+  end
+end
+
 describe RandomTextTransform do
   let(:parser) { RandomTextParser.new }
   let(:transform) { RandomTextTransform.new }
@@ -59,24 +76,8 @@ TEMPLATE
   Петя Иванов.
 RESULT
                                                                        )
+#  transform.apply(parser.parse("(A|%#44^*) %#45^*")).join.strip.should == "[A|%#44^*] %#45^*"
 
   end
 end
-
-describe ArrayTextTransform do
-  let(:parser) { RandomTextParser.new }
-  let(:transform) { ArrayTextTransform.new }
-
-  it "should transform properly" do
-    result = (parser.parse(<<-TEMPLATE
-       (Уважаемые коллеги | Коллеги), (до полуночи осталось (меньше часа|совсем немного)|полночь уже (совсем|очень) скоро)
-TEMPLATE
-                          ))
-    transform.apply(result).join.should == (<<RESULT
-       [Уважаемые коллеги , Коллеги], [до полуночи осталось [меньше часа,совсем немного],полночь уже [совсем,очень] скоро]
-RESULT
-                                      )
-  end
-end
-
 #RSpec::Core::Runner.run([])

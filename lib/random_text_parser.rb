@@ -42,6 +42,13 @@ class ArrayTextTransform < Parslet::Transform
 end
 
 class RandomTextTransform < ArrayTextTransform
+  rule(:and_sentences => subtree(:x) ) {
+    x.join("")
+  }
+
+  rule(:sentence => simple(:x) ) {
+    x
+  }
   rule(:or_sentences => subtree(:x) ) {
     x[rand(x.length)]
   }
