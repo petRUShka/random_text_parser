@@ -1,5 +1,13 @@
 #coding=utf-8
-require "random_text_parser/version"
+require "rubygems"
+require "bundler/setup"
+
+require 'pp'
+require 'parslet'
+
+if RUBY_VERSION < "1.9"
+  $KCODE = 'u'
+end
 
 class RandomTextParser < Parslet::Parser
   rule(:lparen)     { str('(') }
