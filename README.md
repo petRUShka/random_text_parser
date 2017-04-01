@@ -1,3 +1,5 @@
+# THIS GEM IS OBSOLETE AND OVERCOMPLICATED, PLEASE USE https://github.com/installero/pattern_string_generator INSTEAD
+
 # RandomTextParser
 
 TODO: Write a gem description
